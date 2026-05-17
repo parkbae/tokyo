@@ -1,0 +1,1367 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>도쿄 2박 3일 — 우리 여행 플랜</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=DM+Serif+Display:ital@0;1&display=swap');
+
+:root {
+  --ivory: #faf6f1;
+  --warm-white: #fff9f4;
+  --rose-light: #fce9e4;
+  --rose-mid: #e8a598;
+  --rose-main: #c4705a;
+  --rose-deep: #9b4e3a;
+  --gold-light: #f5e6c8;
+  --gold-mid: #d4a853;
+  --gold-deep: #9a6f28;
+  --sage: #8fa888;
+  --sage-light: #e8f0e5;
+  --slate: #4a5568;
+  --slate-light: #718096;
+  --ink: #2d2d2d;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Noto Sans KR', sans-serif;
+  background-color: var(--ivory);
+  color: var(--ink);
+  min-height: 100vh;
+}
+
+/* ─── Top Header ─── */
+.site-header {
+  background: linear-gradient(135deg, #2d1f1a 0%, #4a2c24 40%, #6b3d32 70%, #8b5247 100%);
+  padding: 2.5rem 1.5rem 2rem;
+  position: relative;
+  overflow: hidden;
+}
+.site-header::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -10%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(196,112,90,0.25) 0%, transparent 65%);
+  pointer-events: none;
+}
+.site-header::after {
+  content: '東京';
+  position: absolute;
+  right: 1.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 6rem;
+  font-weight: 900;
+  color: rgba(255,255,255,0.06);
+  letter-spacing: -4px;
+  pointer-events: none;
+  line-height: 1;
+}
+.header-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--rose-mid);
+  margin-bottom: 0.4rem;
+}
+.header-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.9rem;
+  color: #fff;
+  line-height: 1.2;
+  margin-bottom: 0.6rem;
+}
+.header-sub {
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.6;
+}
+.header-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 1rem;
+}
+.header-pill {
+  font-size: 0.7rem;
+  padding: 0.25rem 0.7rem;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.12);
+  color: rgba(255,255,255,0.85);
+  border: 1px solid rgba(255,255,255,0.18);
+}
+
+/* ─── Critical Alert Banner ─── */
+.alert-banner {
+  background: linear-gradient(90deg, #7c2d12, #9a3522);
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.78rem;
+  line-height: 1.6;
+  border-left: 4px solid #f59e0b;
+}
+
+/* ─── Tab Nav ─── */
+.tab-nav {
+  background: #fff;
+  border-bottom: 2px solid #f0e8e0;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+.tab-nav::-webkit-scrollbar { display: none; }
+.tab-nav-inner {
+  display: flex;
+  min-width: max-content;
+  padding: 0 0.75rem;
+}
+.tab-btn {
+  padding: 0.8rem 1.1rem;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--slate-light);
+  border-bottom: 3px solid transparent;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: all 0.2s;
+  background: none;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+}
+.tab-btn:hover { color: var(--rose-main); }
+.tab-btn.active {
+  color: var(--rose-main);
+  border-bottom-color: var(--rose-main);
+  font-weight: 700;
+}
+
+/* ─── Main Content ─── */
+.tab-content { display: none; }
+.tab-content.active { display: block; }
+.content-wrap { max-width: 900px; margin: 0 auto; padding: 1.5rem 1rem 3rem; }
+
+/* ─── Section Title ─── */
+.section-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.4rem;
+  color: var(--rose-deep);
+  margin-bottom: 0.25rem;
+}
+.section-sub {
+  font-size: 0.78rem;
+  color: var(--slate-light);
+  margin-bottom: 1.25rem;
+  line-height: 1.6;
+}
+
+/* ─── Cards ─── */
+.card {
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid #f0e8e0;
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+}
+.card-title {
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--ink);
+  margin-bottom: 0.6rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+/* ─── Day Cards ─── */
+.day-header {
+  border-radius: 10px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+.day-header.d1 { background: linear-gradient(135deg, #ffe8e3 0%, #ffddd5 100%); border-left: 4px solid var(--rose-main); }
+.day-header.d2 { background: linear-gradient(135deg, #e3eeff 0%, #d5e5ff 100%); border-left: 4px solid #4a7fc1; }
+.day-header.d3 { background: linear-gradient(135deg, #e8f5e3 0%, #d5edce 100%); border-left: 4px solid var(--sage); }
+.day-label { font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--slate-light); }
+.day-title { font-family: 'DM Serif Display', serif; font-size: 1.1rem; margin: 0.1rem 0 0.2rem; }
+.day-concept { font-size: 0.75rem; color: var(--slate-light); }
+
+/* ─── Timeline ─── */
+.timeline { list-style: none; padding: 0; margin: 0; }
+.tl-item {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: 0 0.75rem;
+  margin-bottom: 0.5rem;
+}
+.tl-time {
+  font-size: 0.68rem;
+  color: var(--slate-light);
+  padding-top: 0.15rem;
+  text-align: right;
+  font-weight: 500;
+}
+.tl-body {
+  padding-bottom: 0.75rem;
+  border-left: 2px solid #f0e8e0;
+  padding-left: 0.75rem;
+  position: relative;
+}
+.tl-body::before {
+  content: '';
+  position: absolute;
+  left: -5px;
+  top: 6px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--rose-mid);
+  border: 2px solid #fff;
+}
+.tl-name { font-size: 0.85rem; font-weight: 700; color: var(--ink); }
+.tl-note { font-size: 0.74rem; color: var(--slate-light); margin-top: 0.15rem; line-height: 1.5; }
+.tl-warn { font-size: 0.7rem; color: #c05621; background: #fff7ed; border-left: 2px solid #f59e0b; padding: 0.25rem 0.5rem; margin-top: 0.3rem; border-radius: 0 4px 4px 0; }
+
+/* ─── Status Badges ─── */
+.badge {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  vertical-align: middle;
+}
+.badge-confirmed { background: #dcfce7; color: #166534; }
+.badge-candidate { background: var(--gold-light); color: var(--gold-deep); }
+.badge-backup { background: #e0f2fe; color: #075985; }
+.badge-excluded { background: #f3f4f6; color: #6b7280; text-decoration: line-through; }
+.badge-risk { background: #fee2e2; color: #991b1b; }
+.badge-pending { background: #fef3c7; color: #92400e; }
+
+/* ─── Decision Cards (Day 2 Evening) ─── */
+.decision-card {
+  border-radius: 10px;
+  border: 2px solid #f0e8e0;
+  padding: 1.1rem;
+  margin-bottom: 0.75rem;
+  transition: border-color 0.2s;
+}
+.decision-card.recommended { border-color: var(--rose-main); background: linear-gradient(135deg, #fff8f6 0%, #ffe9e4 100%); }
+.decision-card.excluded-card { opacity: 0.65; border-color: #e5e7eb; }
+.dc-rank { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--slate-light); margin-bottom: 0.3rem; }
+.dc-name { font-size: 1rem; font-weight: 700; color: var(--ink); margin-bottom: 0.5rem; }
+.dc-rows { font-size: 0.75rem; line-height: 1.8; color: var(--slate); }
+.dc-rows span { display: inline-block; width: 50px; color: var(--slate-light); font-size: 0.7rem; }
+
+/* ─── Table ─── */
+.data-table { width: 100%; border-collapse: collapse; font-size: 0.75rem; }
+.data-table th { background: #f7f0eb; padding: 0.6rem 0.75rem; text-align: left; font-size: 0.7rem; color: var(--slate); border-bottom: 2px solid #ede4db; white-space: nowrap; }
+.data-table td { padding: 0.6rem 0.75rem; border-bottom: 1px solid #f5ede6; vertical-align: top; }
+.data-table tr:hover td { background: #fdf8f5; }
+
+/* ─── Checklist ─── */
+.check-group { margin-bottom: 1.25rem; }
+.check-group-title {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--slate-light);
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.3rem;
+  border-bottom: 1px solid #f0e8e0;
+}
+.check-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  padding: 0.55rem 0.75rem;
+  border-radius: 8px;
+  margin-bottom: 0.3rem;
+  background: #fff;
+  border: 1px solid #f0e8e0;
+  font-size: 0.8rem;
+  line-height: 1.5;
+}
+.check-icon {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.check-icon.s3 { background: #fee2e2; color: #991b1b; }
+.check-icon.s2 { background: var(--gold-light); color: var(--gold-deep); }
+.check-icon.s1 { background: var(--sage-light); color: #2d6a4f; }
+
+/* ─── Info Grid ─── */
+.info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; }
+@media (max-width: 480px) { .info-grid { grid-template-columns: 1fr; } }
+.info-cell {
+  background: #fff;
+  border: 1px solid #f0e8e0;
+  border-radius: 8px;
+  padding: 0.7rem 0.9rem;
+  font-size: 0.78rem;
+}
+.info-cell-label { font-size: 0.65rem; color: var(--slate-light); margin-bottom: 0.2rem; }
+.info-cell-val { font-weight: 600; color: var(--ink); }
+
+/* ─── Warning block ─── */
+.warn-block {
+  background: #fff7ed;
+  border-left: 4px solid #f59e0b;
+  border-radius: 0 8px 8px 0;
+  padding: 0.75rem 1rem;
+  font-size: 0.78rem;
+  line-height: 1.7;
+  margin-bottom: 0.75rem;
+  color: #7c4a0e;
+}
+.warn-block.critical {
+  background: #fee2e2;
+  border-left-color: #dc2626;
+  color: #7f1d1d;
+}
+
+/* ─── Candidate Table ─── */
+.cand-row { border-bottom: 1px solid #f0e8e0; }
+.cand-row td { padding: 0.65rem 0.6rem; vertical-align: top; font-size: 0.76rem; }
+.cand-name { font-weight: 700; font-size: 0.82rem; }
+.cand-note { font-size: 0.72rem; color: var(--slate-light); margin-top: 0.2rem; line-height: 1.5; }
+
+/* ─── Payment Table ─── */
+.pay-table { width: 100%; border-collapse: collapse; font-size: 0.76rem; }
+.pay-table th { background: #f7f0eb; padding: 0.5rem 0.7rem; text-align: left; font-size: 0.68rem; color: var(--slate); border-bottom: 2px solid #ede4db; }
+.pay-table td { padding: 0.55rem 0.7rem; border-bottom: 1px solid #f5ede6; vertical-align: top; }
+.pay-table tr:hover td { background: #fdf8f5; }
+
+/* ─── Transport Table ─── */
+.tr-table { width: 100%; border-collapse: collapse; font-size: 0.76rem; }
+.tr-table th { background: #f7f0eb; padding: 0.5rem 0.7rem; text-align: left; font-size: 0.68rem; color: var(--slate); border-bottom: 2px solid #ede4db; }
+.tr-table td { padding: 0.5rem 0.7rem; border-bottom: 1px solid #f5ede6; }
+
+/* ─── Weekday table ─── */
+.wd-table { width: 100%; border-collapse: collapse; font-size: 0.74rem; }
+.wd-table th { background: #f7f0eb; padding: 0.5rem 0.7rem; font-size: 0.67rem; color: var(--slate); border-bottom: 2px solid #ede4db; text-align: left; }
+.wd-table td { padding: 0.55rem 0.7rem; border-bottom: 1px solid #f5ede6; vertical-align: top; }
+
+/* ─── Concept 3-split ─── */
+.concept-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.75rem; }
+@media (max-width: 600px) { .concept-grid { grid-template-columns: 1fr; } }
+.concept-card { border-radius: 10px; padding: 1rem; text-align: center; }
+.concept-card.c1 { background: linear-gradient(135deg, #ffe8e3, #ffddd5); }
+.concept-card.c2 { background: linear-gradient(135deg, #e3eeff, #d5e5ff); }
+.concept-card.c3 { background: linear-gradient(135deg, #e8f5e3, #d5edce); }
+.concept-day { font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--slate-light); margin-bottom: 0.2rem; }
+.concept-area { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.4rem; }
+.concept-spots { font-size: 0.72rem; color: var(--slate); line-height: 1.7; }
+
+/* ─── Accordion ─── */
+details { border: 1px solid #f0e8e0; border-radius: 8px; margin-bottom: 0.5rem; background: #fff; }
+details summary {
+  padding: 0.75rem 1rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  list-style: none;
+  color: var(--ink);
+}
+details summary::-webkit-details-marker { display: none; }
+details summary::after { content: '＋'; margin-left: auto; color: var(--rose-mid); font-size: 0.9rem; }
+details[open] summary::after { content: '－'; }
+details .det-body { padding: 0 1rem 1rem; font-size: 0.78rem; line-height: 1.7; color: var(--slate); }
+
+/* ─── Skeleton Summary ─── */
+.summary-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; margin-bottom: 1rem; }
+@media (max-width: 500px) { .summary-grid { grid-template-columns: 1fr; } }
+
+/* ─── Util ─── */
+.divider { height: 1px; background: #f0e8e0; margin: 1.25rem 0; }
+.text-rose { color: var(--rose-main); }
+.text-gold { color: var(--gold-deep); }
+.text-sage { color: var(--sage); }
+.tag { display: inline-block; font-size: 0.65rem; padding: 0.1rem 0.45rem; border-radius: 4px; margin-right: 0.2rem; }
+.tag-d1 { background: #ffe8e3; color: var(--rose-deep); }
+.tag-d2 { background: #e3eeff; color: #2563eb; }
+.tag-d3 { background: #e8f5e3; color: #15803d; }
+</style>
+</head>
+<body>
+
+<!-- ══════════ HEADER ══════════ -->
+<header class="site-header">
+  <div class="header-label">🗾 커플 여행 의사결정 플랜</div>
+  <div class="header-title">도쿄 2박 3일</div>
+  <div class="header-sub">
+    2026.05.22(금) ~ 2026.05.24(일) · 나리타 T3 도착 → T2 출발<br>
+    더 원파이브 도쿄 카메이도 · 로컬 감성 · 웨딩스냅
+  </div>
+  <div class="header-pills">
+    <span class="header-pill">✈ 09:45 도착 / 18:55 출발</span>
+    <span class="header-pill">🏨 카메이도역 근처 숙소</span>
+    <span class="header-pill">🍜 라멘 + 히츠마부시 필수</span>
+    <span class="header-pill">📸 웨딩스냅</span>
+  </div>
+</header>
+
+<!-- ══════════ CRITICAL BANNER ══════════ -->
+<div class="alert-banner">
+  ⚠️ <strong>요일 정정 완료:</strong> 기존 자료 요일 오류 수정됨 —
+  <strong>Day 1 = 5/22 금요일 · Day 2 = 5/23 토요일 · Day 3 = 5/24 일요일(귀국)</strong>.
+  이 정정은 단순 표기 오류가 아님. 멘야미칸 혼잡도·츠키지 운영여부·코인락커 경쟁·히츠마부시 예약 난이도에 직접 영향.
+</div>
+
+<!-- ══════════ TAB NAV ══════════ -->
+<nav class="tab-nav">
+  <div class="tab-nav-inner">
+    <button class="tab-btn active" onclick="showTab('overview')">① 한눈에 보기</button>
+    <button class="tab-btn" onclick="showTab('days')">② Day별 일정</button>
+    <button class="tab-btn" onclick="showTab('decide')">③ 결정할 것 🔴</button>
+    <button class="tab-btn" onclick="showTab('candidates')">④ 후보 전체</button>
+    <button class="tab-btn" onclick="showTab('checklist')">⑤ 예약·검증</button>
+    <button class="tab-btn" onclick="showTab('budget')">⑥ 비용·준비물</button>
+    <button class="tab-btn" onclick="showTab('notes')">⑦ 근거·메모</button>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════════════════
+     TAB 1 — 한눈에 보기
+══════════════════════════════════════════ -->
+<div class="tab-content active" id="tab-overview">
+<div class="content-wrap">
+
+  <div class="section-title">전체 여행 흐름</div>
+  <p class="section-sub">가장 반짝이고 상쾌할 오월의 도쿄 푸른 바람 아래서, 나란히 어깨를 포개어 걸어가는 매 걸음걸음이 우리 둘의 마음에 찬란하고 소중한 동화같은 기억으로 영원토록 따스하게 간직되길 바래 .</p>
+
+  <!-- 남은 결정 3개 -->
+  <div class="warn-block critical">
+    <strong>🚨 지금 당장 결정/예약이 필요한 3가지</strong><br>
+    ① <strong>히츠마부시 빈초 5/24(일) 12:00 예약</strong> — 귀국일 메인 식사, 예약 안 하면 못 먹음<br>
+    ② <strong>NEX 5/24(일) 15:30 도쿄역→나리타 예매</strong> — 비행기 18:55 역산, 이게 안전선<br>
+    ③ <strong>Day 2 저녁 최종 확정</strong> — 아래 ③탭에서 골라줘
+  </div>
+
+  <!-- 여행 컨셉 3분할 -->
+  <div class="card">
+    <div class="card-title">🗺️ 3분할 여행 컨셉</div>
+    <div class="concept-grid">
+      <div class="concept-card c1">
+        <div class="concept-day">Day 1 · 금요일</div>
+        <div class="concept-area">동부 도쿄</div>
+        <div class="concept-spots">카메이도<br>기요스미<br>스카이트리</div>
+      </div>
+      <div class="concept-card c2">
+        <div class="concept-day">Day 2 · 토요일</div>
+        <div class="concept-area">서부 감성권</div>
+        <div class="concept-spots">나카메구로<br>다이칸야마<br>에비스 일대</div>
+      </div>
+      <div class="concept-card c3">
+        <div class="concept-day">Day 3 · 일요일</div>
+        <div class="concept-area">긴자·귀국</div>
+        <div class="concept-spots">츠키지<br>히츠마부시<br>도쿄역 → 나리타</div>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div style="font-size:0.76rem;color:var(--slate);line-height:1.9;">
+      <strong>절대 원칙:</strong> Day 1에 신주쿠·시부야를 섞지 않는다 / Day 2에 신주쿠를 무리하게 넣지 않는다 / Day 3에 웨이팅 맛집을 메인으로 두지 않는다 / 귀국일은 열차·공항 안정성이 맛집 욕심보다 우선이다
+    </div>
+  </div>
+
+  <!-- Day별 요약 카드 -->
+  <div class="summary-grid">
+    <div class="card" style="border-left:4px solid var(--rose-main)">
+      <div class="card-title"><span class="tag tag-d1">D1 금</span> 동부 정착</div>
+      <div style="font-size:0.76rem;line-height:1.8;color:var(--slate);">
+        ✅ 카메이도 교자 본점 점심<br>
+        ✅ 기요스미 정원 스냅<br>
+        ✅ iki ESPRESSO 카페<br>
+        ✅ 스카이트리·소라마치 야경<br>
+        🔄 저녁: 토리톤 도전 → 실패시 Mr.Danger
+      </div>
+    </div>
+    <div class="card" style="border-left:4px solid #4a7fc1">
+      <div class="card-title"><span class="tag tag-d2">D2 토</span> 나카메구로 감성</div>
+      <div style="font-size:0.76rem;line-height:1.8;color:var(--slate);">
+        🔄 아침: 커피도장 사무라이 or 숙소카페<br>
+        ✅ 멘야 미칸 (10:50前 도착 권장)<br>
+        ✅ 나카메구로 강변 산책<br>
+        ✅ 다이칸야마 T-SITE<br>
+        ✅ it COFFEE 다이칸야마<br>
+        🔴 저녁: <strong>미정 (③탭에서 골라줘)</strong>
+      </div>
+    </div>
+    <div class="card" style="border-left:4px solid var(--sage)">
+      <div class="card-title"><span class="tag tag-d3">D3 일</span> 긴자·귀국</div>
+      <div style="font-size:0.76rem;line-height:1.8;color:var(--slate);">
+        ✅ 도쿄역 코인락커 짐 보관<br>
+        ⚠️ 츠키지 장외시장 (일요일 일부만 운영)<br>
+        ✅ 히츠마부시 빈초 긴자 (예약 필수)<br>
+        ✅ 긴자 쇼핑·기념품<br>
+        🚄 15:30 NEX 도쿄역→나리타 T2<br>
+        ✈️ 18:55 출발
+      </div>
+    </div>
+    <div class="card" style="background: linear-gradient(135deg,#f7f0eb,#ffe8e3); border:1px solid #f0e8e0;">
+      <div class="card-title">💡 우리 여행 핵심 기준</div>
+      <div style="font-size:0.76rem;line-height:1.9;color:var(--slate);">
+        동선 적합도 25pt<br>
+        후기 신뢰도 20pt<br>
+        맛·목적성 20pt<br>
+        가성비 15pt<br>
+        커플 분위기 10pt<br>
+        운영 안정성 10pt<br>
+        <span style="color:var(--rose-main);font-weight:700;">+ "꼬마 기억에 남을 곳인가?"</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 요일 오류 영향표 -->
+  <div class="card">
+    <div class="card-title">📅 요일 정정 — 미치는 영향 정리</div>
+    <p style="font-size:0.74rem;color:var(--slate);margin-bottom:0.75rem;">기존 자료의 요일 오류(금→토→일이 아닌 다른 배열)가 아래 장소들에 직접적 영향을 준다.</p>
+    <div style="overflow-x:auto;">
+      <table class="wd-table">
+        <thead><tr><th>장소</th><th>배치 Day</th><th>실제 요일</th><th>영향</th><th>위험도</th></tr></thead>
+        <tbody>
+          <tr><td><strong>카메이도 교자</strong></td><td>D1</td><td>금요일</td><td>평일 → 상대적으로 여유, 점심대 빠른 회전</td><td><span class="badge badge-backup">낮음</span></td></tr>
+          <tr><td><strong>iki ESPRESSO</strong></td><td>D1</td><td>금요일</td><td>평일 영업시간 LO 16:00 가능성, 15:45 도착 시 푸드 소진 위험</td><td><span class="badge badge-candidate">중간</span></td></tr>
+          <tr><td><strong>멘야 미칸</strong></td><td>D2</td><td>토요일</td><td>주말이라 더 혼잡 — 10:50 이전 도착 필수, 오픈런</td><td><span class="badge badge-risk">높음</span></td></tr>
+          <tr><td><strong>Mr. Danger</strong></td><td>D1 백업</td><td>금요일</td><td>영업 확인 필요</td><td><span class="badge badge-candidate">중간</span></td></tr>
+          <tr><td><strong>ぐう 시부야</strong></td><td>D2 후보</td><td>토요일</td><td>토요일 시부야 인파 = 스트레스, 사실상 제외</td><td><span class="badge badge-risk">높음</span></td></tr>
+          <tr><td><strong>牛たん 레몬 신주쿠</strong></td><td>—</td><td>제외</td><td>신주쿠 토요일 웨이팅 2시간+, 동선 파괴</td><td><span class="badge badge-excluded">제외</span></td></tr>
+          <tr><td><strong>히츠마부시 빈초</strong></td><td>D3</td><td>일요일</td><td>일요일 런치 영업 확인 필요, 예약 12:00 권장</td><td><span class="badge badge-risk">높음</span></td></tr>
+          <tr><td><strong>츠키지 장외시장</strong></td><td>D3</td><td>일요일</td><td>일요일 = 일부 점포만 10:00~14:00 운영. 야마초 계란말이 등 목적 좁히기</td><td><span class="badge badge-risk">높음</span></td></tr>
+          <tr><td><strong>도쿄역 코인락커</strong></td><td>D3</td><td>일요일</td><td>일요일 관광객 많아 소진 빠름 → ecbo cloak 앱 예약 권장</td><td><span class="badge badge-risk">높음</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="warn-block" style="margin-top:0.75rem;margin-bottom:0;">
+      <strong>Day 3 츠키지 일요일 운영 리스크:</strong> 일요일에는 장내시장 계통 점포 상당수 휴무. 목적을 <strong>"야마초 타마고야키 + 가벼운 시장 산책"</strong>으로 좁히면 실패 없음. 본격 해산물 식사를 기대하면 실망할 수 있음.
+    </div>
+  </div>
+
+</div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     TAB 2 — Day별 일정
+══════════════════════════════════════════ -->
+<div class="tab-content" id="tab-days">
+<div class="content-wrap">
+
+  <!-- DAY 1 -->
+  <div class="day-header d1">
+    <div>
+      <div class="day-label">Day 1 · 2026.05.22 금요일</div>
+      <div class="day-title">도착 · 동부 정착</div>
+      <div class="day-concept">카메이도 → 기요스미 → 스카이트리</div>
+    </div>
+    <span class="badge badge-confirmed">확정 골격</span>
+  </div>
+
+  <div class="card">
+    <ul class="timeline">
+      <li class="tl-item">
+        <span class="tl-time">09:45</span>
+        <div class="tl-body">
+          <div class="tl-name">나리타 T3 도착</div>
+          <div class="tl-note">출발은 T2이므로 귀국일 T2 위치 사전 파악. T3↔T2 무료 셔틀 운행.</div>
+        </div>
+      </li>
+      <li class="tl-item">
+        <span class="tl-time">~12:30</span>
+        <div class="tl-body">
+          <div class="tl-name">더 원파이브 도쿄 카메이도 이동 · 짐 보관</div>
+          <div class="tl-note">케이세이+지하철 약 1,500엔/인. 체크인 15:00이라 짐 보관만.</div>
+          <div class="tl-warn">⚠️ 숙소 무인 스마트 락커 방식 가능성, 유료(1,000엔) 가능성 있음. 사전 문의 권장.</div>
+        </div>
+      </li>
+      <li class="tl-item">
+        <span class="tl-time">13:00</span>
+        <div class="tl-body">
+          <div class="tl-name">🥟 카메이도 교자 본점 <span class="badge badge-confirmed">확정</span></div>
+          <div class="tl-note">숙소 도보권. 1인 1,000엔대, 현금 or QR만. 맥주와 교자만 있는 노포. 회전율 빠름.</div>
+        </div>
+      </li>
+      <li class="tl-item">
+        <span class="tl-time">14:20</span>
+        <div class="tl-body">
+          <div class="tl-name">🌿 기요스미 정원 <span class="badge badge-confirmed">확정</span></div>
+          <div class="tl-note">입장료 150엔. 연못 이소와타리 돌다리가 웨딩스냅 포인트. 평일 오후라 인파 적음.</div>
+          <div class="tl-warn">⚠️ 16:30 입장 마감. 15:30까지는 들어가야 여유롭게 감상 가능.</div>
+        </div>
+      </li>
+      <li class="tl-item">
+        <span class="tl-time">15:45</span>
+        <div class="tl-body">
+          <div class="tl-name">☕ iki ESPRESSO <span class="badge badge-confirmed">확정</span></div>
+          <div class="tl-note">기요스미 도보 이동. 창고형 개조 카페, 층고 높고 채광 좋음. 카드/IC/QR 가능.</div>
+          <div class="tl-warn">⚠️ 금요일 LO 16:00 가능성. 15:45 도착 시 푸드 메뉴 소진 위험. 음료만 될 수도 있음.</div>
+        </div>
+      </li>
+      <li class="tl-item">
+        <span class="tl-time">17:30</span>
+        <div class="tl-body">
+          <div class="tl-name">🗼 스카이트리·소라마치 <span class="badge badge-confirmed">확정</span></div>
+          <div class="tl-note">2026.05.22 도쿄 일몰 약 18:47. 18:30~19:00이 골든아워. Day 1 사진 포인트.</div>
+        </div>
+      </li>
+      <li class="tl-item">
+        <span class="tl-time">저녁</span>
+        <div class="tl-body">
+          <div class="tl-name">🍣 토리톤 소라마치 도전 → 실패시 Mr. Danger <span class="badge badge-backup">백업전략</span></div>
+          <div class="tl-note">토리톤: 홋카이도 직송 회전초밥, 맛은 압도적. 단 웨이팅 1~2시간 이상 가능. 번호표 뽑고 소라마치 구경 후 콜 대기.</div>
+          <div class="tl-warn">⚠️ 1시간 이상이면 쿨하게 포기. 백업: Mr. Danger 타치바나 본점(카드·PayPay 가능).</div>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <details>
+    <summary>💬 Day 1 Claude 의견</summary>
+    <div class="det-body">
+      기요스미 정원 → iki ESPRESSO 세트는 이번 여행의 Day 1 감성 하이라이트. 공원에서 사진 찍고 바로 옆 카페에서 커피 한 잔 하는 흐름이 제일 자연스럽다. 단, iki의 금요일 LO 시간이 변수라서 기요스미를 살짝 빠르게 돌거나 iki를 음료만 목적으로 가면 리스크 제거됨. 스카이트리는 Day 1 야경 확정이고, 토리톤 도전은 현장 상황에 맡기는 게 맞다. 1시간 이상 대기하면 Day 1 여행 피로도를 망가뜨릴 수 있음.
+    </div>
+  </details>
+
+  <div class="divider"></div>
+
+  <!-- DAY 2 -->
+  <div class="day-header d2">
+    <div>
+      <div class="day-label">Day 2 · 2026.05.23 토요일</div>
+      <div class="day-title">나카메구로 · 다이칸야마 감성일</div>
+      <div class="day-concept">멘야미칸 → 강변 → T-SITE → 저녁 미정</div>
+    </div>
+    <span class="badge badge-pending">저녁 미정</span>
+  </div>
+
+  <div class="card">
+    <ul class="timeline">
+      <li class="tl-item">
+        <span class="tl-time">08:30</span>
+        <div class="tl-body">
+          <div class="tl-name">☕ 커피도장 사무라이 or 숙소 근처 카페 <span class="badge badge-candidate">조건부</span></div>
+          <div class="tl-note">사무라이는 토요일 영업 여부 확인 필요. 안 되면 숙소 근처 편의점 모닝으로 대체해도 충분.</div>
+        </div>
+      </li>
+      <li class="tl-item">
+        <span class="tl-time">10:20</span>
+        <div class="tl-body">
+          <div class="tl-name">카메이도 출발 → 나카메구로 이동</div>
+          <div class="tl-note">지하철 약 30~40분. 멘야 미칸 오픈 전 도착 목표.</div>
+        </div>
+      </li>
+      <li class="tl-item">
+        <span class="tl-time">11:00</span>
+        <div class="tl-body">
+          <div class="tl-name">🍜 麺や みかん (멘야 미칸) <span class="badge badge-confirmed">확정</span></div>
+          <div class="tl-note">라멘 어워드 수상작. 국물 깔끔하고 깊음. 14석 소규모. 현금 중심(카드 불가 가능성).</div>
+          <div class="tl-warn">⚠️ 토요일이라 더 혼잡. 10:50 이전 도착 강력 권장. 늦으면 1시간+ 웨이팅.</div>
+        </div>
+      </li>
+      <li class="tl-item">
+        <span class="tl-time">12:30</span>
+        <div class="tl-body">
+          <div class="tl-name">🌿 나카메구로 강변 산책 <span class="badge badge-confirmed">확정</span></div>
+          <div class="tl-note">목메구로 강을 따라 걷는 산책로. 카페·빵집·잡화 자연스럽게 들르기.</div>
+        </div>
+      </li>
+      <li class="tl-item">
+        <span class="tl-time">13:40</span>
+        <div class="tl-body">
+          <div class="tl-name">📚 다이칸야마 T-SITE <span class="badge badge-confirmed">확정</span></div>
+          <div class="tl-note">세련된 츠타야 서점·잡화. 보는 것만으로 힐링. 커플 감성 산책 최고.</div>
+        </div>
+      </li>
+      <li class="tl-item">
+        <span class="tl-time">15:30</span>
+        <div class="tl-body">
+          <div class="tl-name">☕ it COFFEE 다이칸야마 <span class="badge badge-confirmed">확정</span></div>
+          <div class="tl-note">T-SITE 인근. 토요일 영업시간 확인 필요. 대안으로 다이칸야마 근처 카페 현장 선택 가능.</div>
+        </div>
+      </li>
+      <li class="tl-item">
+        <span class="tl-time">18:30~</span>
+        <div class="tl-body">
+          <div class="tl-name">🍶 Day 2 저녁 — <span style="color:var(--rose-main);font-weight:700;">미정 (③탭에서 선택)</span></div>
+          <div class="tl-note">아래 ③탭 '결정할 것'에 선택지 비교표가 있어. 나카메구로 감성 유지가 1순위.</div>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <details>
+    <summary>💬 Day 2 Claude 의견</summary>
+    <div class="det-body">
+      Day 2의 핵심은 나카메구로의 감성 유지. 이 동선을 지키기 위해 신주쿠/시부야는 과감하게 버린 거야. 멘야 미칸은 맛은 확실하게 보장되는데, 토요일 오픈런이라는 조건 하나만 지키면 돼. 강변 산책 → T-SITE → 카페 흐름이 제일 자연스럽고, 저녁은 이 동선을 깨지 않는 곳으로 정하는 게 포인트.
+    </div>
+  </details>
+
+  <div class="divider"></div>
+
+  <!-- DAY 3 -->
+  <div class="day-header d3">
+    <div>
+      <div class="day-label">Day 3 · 2026.05.24 일요일 · 귀국일</div>
+      <div class="day-title">긴자 · 츠키지 · 귀국</div>
+      <div class="day-concept">코인락커 → 츠키지 → 히츠마부시 → NEX</div>
+    </div>
+    <span class="badge badge-risk">일정 빡빡</span>
+  </div>
+
+  <div class="warn-block critical">
+    귀국일 원칙: <strong>맛집 욕심보다 열차·공항 안정성이 우선.</strong> 15:30 NEX 탑승이 기준선. 이걸 지키면 나머지는 여유롭게 즐길 수 있어.
+  </div>
+
+  <div class="card">
+    <ul class="timeline">
+      <li class="tl-item">
+        <span class="tl-time">08:30</span>
+        <div class="tl-body">
+          <div class="tl-name">🏨 호텔 체크아웃 (10:00 마감)</div>
+          <div class="tl-note">전날 밤에 짐 미리 정리. 체크아웃 후 바로 이동.</div>
+        </div>
+      </li>
+      <li class="tl-item">
+        <span class="tl-time">09:10</span>
+        <div class="tl-body">
+          <div class="tl-name">🗄️ 도쿄역 코인락커 <span class="badge badge-confirmed">필수</span></div>
+          <div class="tl-note">Suica/IC카드 사용 가능 락커 우선. 일요일은 소진 빠름.</div>
+          <div class="tl-warn">⚠️ ecbo cloak 앱으로 사전 예약 강력 권장. 700~1,000엔.</div>
+        </div>
+      </li>
+      <li class="tl-item">
+        <span class="tl-time">09:50</span>
+        <div class="tl-body">
+          <div class="tl-name">🐟 츠키지 장외시장 <span class="badge badge-candidate">일요일 리스크</span></div>
+          <div class="tl-note">목적을 <strong>야마초 타마고야키 + 가벼운 시장 간식</strong>으로 좁히기. 본격 해산물 식사 기대 금지.</div>
+          <div class="tl-warn">⚠️ 일요일 = 일부 점포만 10:00~14:00 운영. 현금 지참 필수.</div>
+        </div>
+      </li>
+      <li class="tl-item">
+        <span class="tl-time">12:00</span>
+        <div class="tl-body">
+          <div class="tl-name">🍱 ひつまぶし名古屋備長 마로니에게이트 긴자점 <span class="badge badge-confirmed">예약 필수</span></div>
+          <div class="tl-note">귀국 전 최고급 마무리. 12층 창가석. 카드 가능. 11:30보다 12:00 예약이 더 안정적.</div>
+          <div class="tl-warn">⚠️ 일요일 런치 영업시간 확인 필요. 반드시 사전 예약.</div>
+        </div>
+      </li>
+      <li class="tl-item">
+        <span class="tl-time">13:00</span>
+        <div class="tl-body">
+          <div class="tl-name">🛍️ 긴자 쇼핑 / GINZA SIX / 기념품</div>
+          <div class="tl-note">여유롭게 기념품. 잔돈 털기 좋은 타이밍.</div>
+        </div>
+      </li>
+      <li class="tl-item">
+        <span class="tl-time">14:45</span>
+        <div class="tl-body">
+          <div class="tl-name">🚶 도쿄역 복귀 · 짐 수거</div>
+          <div class="tl-note">여유 있게 이동. 락커 수거 후 개찰구 진입.</div>
+        </div>
+      </li>
+      <li class="tl-item">
+        <span class="tl-time">15:30</span>
+        <div class="tl-body">
+          <div class="tl-name">🚄 NEX 도쿄역 → 나리타 T2 <span class="badge badge-risk">귀국 안전선</span></div>
+          <div class="tl-note">3,070엔/인. 약 60분. 17:00 나리타 도착 → 체크인 여유.</div>
+          <div class="tl-warn">⚠️ 이 열차를 놓치면 다음 열차도 있지만 체크인이 빡빡해짐. 반드시 사전 예매.</div>
+        </div>
+      </li>
+      <li class="tl-item">
+        <span class="tl-time">17:00</span>
+        <div class="tl-body">
+          <div class="tl-name">✈️ 나리타 T2 도착 → 체크인</div>
+          <div class="tl-note">18:55 출발. 1시간 55분 여유. 충분함.</div>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <details>
+    <summary>💬 Day 3 Claude 의견</summary>
+    <div class="det-body">
+      귀국일은 절대 욕심 부리면 안 돼. 돈카츠 마루시치를 여기에 넣으면 웨이팅으로 비행기 탈 확률이 생겨. 히츠마부시 예약이 확보되면 그게 이날의 완벽한 메인이야. 츠키지는 기대치를 낮추고 시장 산책+계란말이 정도로만 가면 오히려 여유롭게 즐길 수 있어. 핵심은 15:30 NEX를 사전 예매해 두는 것. 그게 이날의 가장 중요한 준비야.
+    </div>
+  </details>
+
+</div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     TAB 3 — 결정할 것
+══════════════════════════════════════════ -->
+<div class="tab-content" id="tab-decide">
+<div class="content-wrap">
+
+  <div class="section-title">아직 결정 안 된 것들</div>
+  <p class="section-sub">여기서 골라주면 일정이 완성돼. 특히 Day 2 저녁이 핵심이야.</p>
+
+  <!-- ① 히츠마부시 예약 -->
+  <div class="card" style="border-left:4px solid #dc2626;">
+    <div class="card-title">🔴 ① 히츠마부시 빈초 예약 — 가장 먼저 해야 함</div>
+    <div style="font-size:0.8rem;line-height:1.8;color:var(--slate);">
+      장소: ひつまぶし名古屋備長 마로니에게이트 긴자2 12층<br>
+      날짜: 2026.05.24(일) / 시간: <strong>12:00 예약 권장</strong> (11:30보다 안정적)<br>
+      예약방법: 타베로그 또는 공식 전화 예약<br>
+      가격: 4,000~6,000엔/인 (카드 가능)<br>
+    </div>
+    <div class="tl-warn" style="margin-top:0.5rem;">일요일 런치 영업 여부 먼저 전화 확인 후 예약. 취소 조건도 확인.</div>
+  </div>
+
+  <!-- ② NEX 예매 -->
+  <div class="card" style="border-left:4px solid #dc2626;">
+    <div class="card-title">🔴 ② NEX 5/24 15:30 도쿄역→나리타 예매</div>
+    <div style="font-size:0.8rem;line-height:1.8;color:var(--slate);">
+      JR 나리타 익스프레스 / 도쿄역 15:30발 / 나리타 T2 17:00 전후 도착<br>
+      요금: 3,070엔/인 / 사전 예매: JR Pass 앱 or 역 창구 or SmartEx<br>
+    </div>
+    <div class="tl-warn" style="margin-top:0.5rem;">일요일 관광 피크 시즌이라 만석 가능. 미리 예매해두면 마음이 편함.</div>
+  </div>
+
+  <!-- ③ Day 2 저녁 (핵심) -->
+  <div class="card" style="border-top:3px solid var(--rose-main);">
+    <div class="card-title">🔴 ③ Day 2 저녁 선택 — 여기서 골라줘</div>
+    <p style="font-size:0.76rem;color:var(--slate);margin-bottom:0.9rem;">4가지 선택지를 비교해봤어. 나카메구로 감성을 유지하는 게 최우선 기준이야.</p>
+
+    <div class="decision-card recommended">
+      <div class="dc-rank">추천 1순위 (이중 전략)</div>
+      <div class="dc-name">B. 아구Ri (AguRi) 나카메구로 예약 + A. 현장 탐색 병행</div>
+      <div class="dc-rows">
+        <span>방향</span> 예약 확보 + 감성 유지형<br>
+        <span>장점</span> 나카메구로 동선 유지, 개실 감성, 사시미 가능, 예약으로 안전망 확보<br>
+        <span>리스크</span> 매장명 혼선 있음, 흡연 가능성 미확인 → 예약 전 전화 확인 필요<br>
+        <span>전략</span> 아구Ri 예약해두고, 강변 걷다가 더 좋은 이자카야 보이면 현장 선택<br>
+        <span>판단</span> <strong>이 이중 전략이 가장 안전하고 감성도 안 깨짐</strong>
+      </div>
+    </div>
+
+    <div class="decision-card">
+      <div class="dc-rank">선택지 A</div>
+      <div class="dc-name">A. 나카메구로 이자카야 자체 탐색</div>
+      <div class="dc-rows">
+        <span>방향</span> 감성 유지형 1순위<br>
+        <span>장점</span> 동선 최소화, 진짜 로컬 감성, 발견의 즐거움<br>
+        <span>리스크</span> 토요일 저녁 만석 가능성, 안전망 없음<br>
+        <span>판단</span> 자연스럽지만 만석 시 플랜B가 없어서 단독으로는 위험
+      </div>
+    </div>
+
+    <div class="decision-card">
+      <div class="dc-rank">선택지 C (고기 먹고 싶을 때)</div>
+      <div class="dc-name">C. 炭火焼ホルモン ぐう 渋谷 (호르몬 구 시부야)</div>
+      <div class="dc-rows">
+        <span>방향</span> 고기 욕망형 백업<br>
+        <span>장점</span> 예약 가능, 호르몬 만족도 높음<br>
+        <span>리스크</span> 토요일 시부야 이동 = 인파 스트레스, 나카메구로 감성 단절<br>
+        <span>판단</span> 고기가 진짜 먹고 싶을 때만. 감성보다 식욕 우선이라면 선택 가능
+      </div>
+    </div>
+
+    <div class="decision-card excluded-card">
+      <div class="dc-rank">선택지 D — 이번 일정 제외</div>
+      <div class="dc-name">D. 牛たんの檸檬 신주쿠 (우설 레몬 신주쿠)</div>
+      <div class="dc-rows">
+        <span>방향</span> 제외<br>
+        <span>이유</span> 신주쿠 토요일 이동 피로 + 2시간 웨이팅 가능 + 2시간 식사 제한 + 동선 완전 파괴<br>
+        <span>판단</span> 맛은 확실하지만 이번 동선에서는 독이 됨
+      </div>
+    </div>
+
+    <div style="background:linear-gradient(135deg,#fff8f6,#ffe9e4);border-radius:8px;padding:0.85rem;margin-top:0.5rem;font-size:0.8rem;border:1px solid var(--rose-light);">
+      💡 <strong>추천 결론:</strong> 아구Ri를 사전 예약해두고, 당일 나카메구로에서 더 좋은 곳이 보이면 현장 선택하는 이중 전략이 가장 안전해. 예약이 보험이 되고 감성도 지킬 수 있어.
+    </div>
+  </div>
+
+  <!-- ④ 코인락커 -->
+  <div class="card" style="border-left:4px solid var(--gold-mid);">
+    <div class="card-title">🟡 ④ 도쿄역 수하물 보관 (Day 3)</div>
+    <div style="font-size:0.8rem;line-height:1.8;color:var(--slate);">
+      ecbo cloak 앱 설치 후 도쿄역 보관소 사전 예약 권장<br>
+      일반 코인락커는 일요일에 빠르게 소진됨<br>
+      Suica/IC카드 결제 가능 락커 우선 탐색<br>
+      요금: 700~1,000엔 하루
+    </div>
+  </div>
+
+  <!-- ⑤ 츠키지 운영 -->
+  <div class="card" style="border-left:4px solid var(--gold-mid);">
+    <div class="card-title">🟡 ⑤ 츠키지 일요일 운영 — 기대치 조정 필요</div>
+    <div style="font-size:0.8rem;line-height:1.8;color:var(--slate);">
+      일요일 = 일부 점포만 운영 (주로 10:00~14:00)<br>
+      목적을 <strong>야마초 타마고야키 + 가벼운 시장 산책</strong>으로만 잡기<br>
+      본격 해산물 식사 목적이라면 Day 3 방문은 리스크<br>
+      현금 필수
+    </div>
+  </div>
+
+  <!-- ⑥ 토리톤 도전 여부 -->
+  <div class="card" style="border-left:4px solid #94a3b8;">
+    <div class="card-title">⚪ ⑥ Day 1 저녁 — 토리톤 도전할까?</div>
+    <div style="font-size:0.8rem;line-height:1.8;color:var(--slate);">
+      도전: 맛 압도적, 첫날 분위기 업<br>
+      현실: 저녁 시간대 1~3시간 웨이팅 흔함<br>
+      전략: 번호표 뽑고 소라마치 구경 병행 → 1시간 이상이면 포기<br>
+      포기 시: Mr. Danger 타치바나 본점 또는 소라마치 내 식당
+    </div>
+  </div>
+
+</div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     TAB 4 — 후보 전체
+══════════════════════════════════════════ -->
+<div class="tab-content" id="tab-candidates">
+<div class="content-wrap">
+
+  <div class="section-title">후보 전체 상태표</div>
+  <p class="section-sub">확정 / 백업·조건부 / 제외 세 가지로 나눠서 정리했어. 왜 넣고 뺐는지 이유도 같이 있어.</p>
+
+  <!-- 확정 -->
+  <div class="card">
+    <div class="card-title" style="color:#166534;">✅ 확정 후보</div>
+    <div style="overflow-x:auto;">
+      <table style="width:100%;border-collapse:collapse;">
+        <thead><tr style="background:#f0fdf4;font-size:0.68rem;color:#4a5568;">
+          <th style="padding:0.5rem;text-align:left;border-bottom:2px solid #dcfce7;">장소</th>
+          <th style="padding:0.5rem;border-bottom:2px solid #dcfce7;">권역</th>
+          <th style="padding:0.5rem;border-bottom:2px solid #dcfce7;">Day</th>
+          <th style="padding:0.5rem;border-bottom:2px solid #dcfce7;">역할</th>
+          <th style="padding:0.5rem;border-bottom:2px solid #dcfce7;min-width:160px;">Claude 의견</th>
+        </tr></thead>
+        <tbody>
+          <tr class="cand-row"><td><span class="cand-name">카메이도 교자 본점</span><div class="cand-note">현금/QR, 1인 1천엔대</div></td><td style="font-size:0.72rem;">카메이도</td><td><span class="tag tag-d1">D1</span></td><td style="font-size:0.72rem;">도착 후 첫 식사, 로컬 입문</td><td style="font-size:0.72rem;color:var(--slate);">숙소 도보권으로 동선 제로. 가성비+노포 감성 완벽</td></tr>
+          <tr class="cand-row"><td><span class="cand-name">기요스미 정원</span><div class="cand-note">입장료 150엔, 16:30 마감</div></td><td style="font-size:0.72rem;">기요스미</td><td><span class="tag tag-d1">D1</span></td><td style="font-size:0.72rem;">웨딩스냅 포인트</td><td style="font-size:0.72rem;color:var(--slate);">연못 돌다리 스냅이 이번 여행 사진 하이라이트 가능</td></tr>
+          <tr class="cand-row"><td><span class="cand-name">iki ESPRESSO</span><div class="cand-note">카드/IC/QR, 금 LO 16:00?</div></td><td style="font-size:0.72rem;">기요스미</td><td><span class="tag tag-d1">D1</span></td><td style="font-size:0.72rem;">정원 후 카페 휴식</td><td style="font-size:0.72rem;color:var(--slate);">15:45 도착 시 음료만 가능할 수 있음. 그래도 넣을 가치 충분</td></tr>
+          <tr class="cand-row"><td><span class="cand-name">스카이트리·소라마치</span><div class="cand-note">무료~3천엔</div></td><td style="font-size:0.72rem;">오시아게</td><td><span class="tag tag-d1">D1</span></td><td style="font-size:0.72rem;">야경, Day 1 마무리</td><td style="font-size:0.72rem;color:var(--slate);">일몰 18:47 골든아워 노려볼 것</td></tr>
+          <tr class="cand-row"><td><span class="cand-name">麺や みかん (멘야 미칸)</span><div class="cand-note">현금 중심, 14석, 오픈런</div></td><td style="font-size:0.72rem;">나카메구로</td><td><span class="tag tag-d2">D2</span></td><td style="font-size:0.72rem;">라멘 메인</td><td style="font-size:0.72rem;color:var(--slate);">토요일 오픈런 조건으로만 확정. 10:50前 도착 必</td></tr>
+          <tr class="cand-row"><td><span class="cand-name">나카메구로 강변 & T-SITE</span><div class="cand-note">무료</div></td><td style="font-size:0.72rem;">나카메구로/다이칸야마</td><td><span class="tag tag-d2">D2</span></td><td style="font-size:0.72rem;">Day 2 감성 메인</td><td style="font-size:0.72rem;color:var(--slate);">신주쿠를 버린 이유. 이 동선의 핵심</td></tr>
+          <tr class="cand-row"><td><span class="cand-name">it COFFEE 다이칸야마</span><div class="cand-note">토요일 영업 확인 필요</div></td><td style="font-size:0.72rem;">다이칸야마</td><td><span class="tag tag-d2">D2</span></td><td style="font-size:0.72rem;">오후 카페 휴식</td><td style="font-size:0.72rem;color:var(--slate);">T-SITE 산책 후 자연스러운 흐름</td></tr>
+          <tr class="cand-row"><td><span class="cand-name">히츠마부시 빈초 긴자</span><div class="cand-note">예약 필수, 카드 가능</div></td><td style="font-size:0.72rem;">긴자</td><td><span class="tag tag-d3">D3</span></td><td style="font-size:0.72rem;">귀국 전 메인 식사</td><td style="font-size:0.72rem;color:var(--slate);">예약으로 웨이팅 없앤 완벽한 마무리. 우선 예약부터</td></tr>
+          <tr class="cand-row"><td><span class="cand-name">츠키지 장외시장</span><div class="cand-note">현금 필수, 일부만 운영</div></td><td style="font-size:0.72rem;">츠키지</td><td><span class="tag tag-d3">D3</span></td><td style="font-size:0.72rem;">시장 간식, 잔돈 털기</td><td style="font-size:0.72rem;color:var(--slate);">일요일 기대치 낮추면 오히려 여유롭게 좋음</td></tr>
+          <tr class="cand-row"><td><span class="cand-name">도쿄역 코인락커</span><div class="cand-note">Suica 가능, 예약 앱 필수</div></td><td style="font-size:0.72rem;">도쿄역</td><td><span class="tag tag-d3">D3</span></td><td style="font-size:0.72rem;">귀국일 인프라</td><td style="font-size:0.72rem;color:var(--slate);">이게 실패하면 Day 3 전체가 망가짐. ecbo cloak 필수</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 백업/조건부 -->
+  <div class="card">
+    <div class="card-title" style="color:var(--gold-deep);">🔄 백업 · 조건부 후보</div>
+    <div style="overflow-x:auto;">
+      <table style="width:100%;border-collapse:collapse;">
+        <thead><tr style="background:#fffbeb;font-size:0.68rem;color:#4a5568;">
+          <th style="padding:0.5rem;text-align:left;border-bottom:2px solid #fde68a;">장소</th>
+          <th style="padding:0.5rem;border-bottom:2px solid #fde68a;">조건</th>
+          <th style="padding:0.5rem;border-bottom:2px solid #fde68a;min-width:180px;">사용 시나리오</th>
+        </tr></thead>
+        <tbody>
+          <tr class="cand-row"><td><span class="cand-name">토리톤 소라마치 회전초밥</span></td><td style="font-size:0.72rem;">대기 1시간 이내</td><td style="font-size:0.72rem;color:var(--slate);">D1 저녁, 웨이팅 1시간 이하면 도전. 이상이면 포기</td></tr>
+          <tr class="cand-row"><td><span class="cand-name">Mr. Danger 타치바나 본점</span></td><td style="font-size:0.72rem;">토리톤 포기 시</td><td style="font-size:0.72rem;color:var(--slate);">D1 저녁 백업. 카드·PayPay 가능. 가성비 스테이크</td></tr>
+          <tr class="cand-row"><td><span class="cand-name">커피도장 사무라이</span></td><td style="font-size:0.72rem;">토요일 영업 확인 후</td><td style="font-size:0.72rem;color:var(--slate);">D2 아침, 확인 안 되면 숙소 편의점 모닝으로 대체</td></tr>
+          <tr class="cand-row"><td><span class="cand-name">아구Ri 나카메구로</span></td><td style="font-size:0.72rem;">영업·예약 확인 필요</td><td style="font-size:0.72rem;color:var(--slate);">D2 저녁 예약 보험. 이중 전략의 핵심. 매장명·흡연 확인 先</td></tr>
+          <tr class="cand-row"><td><span class="cand-name">炭火焼ホルモン ぐう 渋谷</span></td><td style="font-size:0.72rem;">고기 욕구 최우선 시</td><td style="font-size:0.72rem;color:var(--slate);">D2 저녁. 감성보다 식욕이 우선이라면 선택. 토요일 시부야 이동 감안</td></tr>
+          <tr class="cand-row"><td><span class="cand-name">돈카츠 마루시치 긴자</span></td><td style="font-size:0.72rem;">귀국일 시간 여유시만</td><td style="font-size:0.72rem;color:var(--slate);">D3 사용 거의 불가. 기장 시스템+웨이팅으로 비행기 리스크 너무 큼</td></tr>
+          <tr class="cand-row"><td><span class="cand-name">우나기노 나루세 카렛타 시오도메</span></td><td style="font-size:0.72rem;">히츠마부시 대안</td><td style="font-size:0.72rem;color:var(--slate);">예약 불가 시 대안. 긴자 근처 동선 유지</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 제외 -->
+  <div class="card">
+    <div class="card-title" style="color:#6b7280;">✕ 제외 후보 — 이번 동선에 맞지 않음</div>
+    <p style="font-size:0.74rem;color:var(--slate);margin-bottom:0.75rem;">맛이 나쁜 게 아니야. 이번 동선에서 피로도·이동 리스크가 커서 제외한 거야.</p>
+    <div style="overflow-x:auto;">
+      <table style="width:100%;border-collapse:collapse;">
+        <thead><tr style="background:#f9fafb;font-size:0.68rem;color:#4a5568;">
+          <th style="padding:0.5rem;text-align:left;border-bottom:2px solid #e5e7eb;">장소</th>
+          <th style="padding:0.5rem;border-bottom:2px solid #e5e7eb;min-width:200px;">제외 이유</th>
+        </tr></thead>
+        <tbody>
+          <tr class="cand-row"><td><span class="cand-name" style="text-decoration:line-through;color:#9ca3af;">牛たんの檸檬 신주쿠</span></td><td style="font-size:0.72rem;color:#6b7280;">신주쿠 이동 + 토요일 2시간 웨이팅 + 식사 2시간 제한 → 동선 파괴</td></tr>
+          <tr class="cand-row"><td><span class="cand-name" style="text-decoration:line-through;color:#9ca3af;">돈카츠 마루시치 긴자 (귀국일 본 사용)</span></td><td style="font-size:0.72rem;color:#6b7280;">기장 시스템 + 웨이팅 = 비행기 놓칠 리스크 90%</td></tr>
+          <tr class="cand-row"><td><span class="cand-name" style="text-decoration:line-through;color:#9ca3af;">Niku & Kome 아키하바라</span></td><td style="font-size:0.72rem;color:#6b7280;">커플 여행 분위기와 맞지 않음, 아키하바라 동선 이탈</td></tr>
+          <tr class="cand-row"><td><span class="cand-name" style="text-decoration:line-through;color:#9ca3af;">旬鮮酒場 天狗 아키하바라</span></td><td style="font-size:0.72rem;color:#6b7280;">체인점, 커플 분위기 감점</td></tr>
+          <tr class="cand-row"><td><span class="cand-name" style="text-decoration:line-through;color:#9ca3af;">Mr. FARMER 신주쿠 미로드</span></td><td style="font-size:0.72rem;color:#6b7280;">신주쿠 이동 피로, 동선 이탈</td></tr>
+          <tr class="cand-row"><td><span class="cand-name" style="text-decoration:line-through;color:#9ca3af;">Canoviano Cafe 가조엔</span></td><td style="font-size:0.72rem;color:#6b7280;">운영 불명확, 이동 거리</td></tr>
+          <tr class="cand-row"><td><span class="cand-name" style="text-decoration:line-through;color:#9ca3af;">TOHAKU茶館</span></td><td style="font-size:0.72rem;color:#6b7280;">우에노 이탈, 시간 대비 가치 낮음</td></tr>
+          <tr class="cand-row"><td><span class="cand-name" style="text-decoration:line-through;color:#9ca3af;">GOOD 스테이크 아키하바라</span></td><td style="font-size:0.72rem;color:#6b7280;">아키하바라 동선 이탈, 커플 분위기 부적합</td></tr>
+          <tr class="cand-row"><td><span class="cand-name" style="text-decoration:line-through;color:#9ca3af;">Steak Max 신주쿠</span></td><td style="font-size:0.72rem;color:#6b7280;">신주쿠 이동 피로</td></tr>
+          <tr class="cand-row"><td><span class="cand-name" style="text-decoration:line-through;color:#9ca3af;">TWELVE GARDENS 시로카네다이</span></td><td style="font-size:0.72rem;color:#6b7280;">동선 이탈</td></tr>
+          <tr class="cand-row"><td><span class="cand-name" style="text-decoration:line-through;color:#9ca3af;">Café La Bohème 신주쿠교엔</span></td><td style="font-size:0.72rem;color:#6b7280;">신주쿠 이동, 동선 파괴</td></tr>
+          <tr class="cand-row"><td><span class="cand-name" style="text-decoration:line-through;color:#9ca3af;">Kitchen Carrot 니시오기쿠보</span></td><td style="font-size:0.72rem;color:#6b7280;">동선에서 완전히 이탈</td></tr>
+          <tr class="cand-row"><td><span class="cand-name" style="text-decoration:line-through;color:#9ca3af;">히비야 마츠모토로 빅사이트점</span></td><td style="font-size:0.72rem;color:#6b7280;">오다이바 이동 = 시간 낭비</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     TAB 5 — 예약·검증
+══════════════════════════════════════════ -->
+<div class="tab-content" id="tab-checklist">
+<div class="content-wrap">
+
+  <div class="section-title">예약 · 검증 체크리스트</div>
+  <p class="section-sub">우선순위 순으로 정리했어. ★★★부터 먼저 처리해줘.</p>
+
+  <div class="check-group">
+    <div class="check-group-title">★★★ 최우선 — 지금 당장</div>
+    <div class="check-item">
+      <div class="check-icon s3">①</div>
+      <div><strong>히츠마부시 빈초 5/24(일) 12:00 예약</strong><br><span style="font-size:0.72rem;color:var(--slate);">타베로그 or 전화. 일요일 런치 영업 먼저 확인. 귀국일 메인 식사.</span></div>
+    </div>
+    <div class="check-item">
+      <div class="check-icon s3">②</div>
+      <div><strong>NEX 5/24(일) 15:30 도쿄역→나리타 T2 예매</strong><br><span style="font-size:0.72rem;color:var(--slate);">JR SmartEx 앱 or 역 창구. 3,070엔/인. 일요일 관광 피크 시즌.</span></div>
+    </div>
+    <div class="check-item">
+      <div class="check-icon s3">③</div>
+      <div><strong>Day 2 저녁 최종 확정 및 예약</strong><br><span style="font-size:0.72rem;color:var(--slate);">③탭에서 선택. 아구Ri 이중 전략 권장.</span></div>
+    </div>
+  </div>
+
+  <div class="check-group">
+    <div class="check-group-title">★★ 2순위 — 출발 전 완료</div>
+    <div class="check-item">
+      <div class="check-icon s2">④</div>
+      <div><strong>ecbo cloak 앱 설치 + 도쿄역 5/24 보관 예약</strong><br><span style="font-size:0.72rem;color:var(--slate);">일요일 코인락커 소진 빠름. 앱 기반 예약이 가장 확실.</span></div>
+    </div>
+    <div class="check-item">
+      <div class="check-icon s2">⑤</div>
+      <div><strong>엔화 현금 준비 — 인당 최소 10,000엔 소액권</strong><br><span style="font-size:0.72rem;color:var(--slate);">1,000엔·500엔·100엔 포함. 카메이도 교자·멘야 미칸·츠키지 현금 필수.</span></div>
+    </div>
+    <div class="check-item">
+      <div class="check-icon s2">⑥</div>
+      <div><strong>아구Ri 나카메구로 영업 여부·예약 방법 확인</strong><br><span style="font-size:0.72rem;color:var(--slate);">매장명 혼선 있음, 흡연 여부 확인 필요. 전화 선확인.</span></div>
+    </div>
+    <div class="check-item">
+      <div class="check-icon s2">⑦</div>
+      <div><strong>히츠마부시 빈초 일요일 런치 영업시간 재확인</strong><br><span style="font-size:0.72rem;color:var(--slate);">예약 전 영업 확인 필수.</span></div>
+    </div>
+    <div class="check-item">
+      <div class="check-icon s2">⑧</div>
+      <div><strong>멘야 미칸 토요일 영업 재확인</strong><br><span style="font-size:0.72rem;color:var(--slate);">타베로그 영업시간 확인.</span></div>
+    </div>
+    <div class="check-item">
+      <div class="check-icon s2">⑨</div>
+      <div><strong>커피도장 사무라이 토요일 영업 확인</strong><br><span style="font-size:0.72rem;color:var(--slate);">확인 안 되면 숙소 근처 카페로 대체.</span></div>
+    </div>
+    <div class="check-item">
+      <div class="check-icon s2">⑩</div>
+      <div><strong>it COFFEE 다이칸야마 토요일 영업시간 확인</strong><br><span style="font-size:0.72rem;color:var(--slate);">만석 시 근처 대안 카페 미리 파악.</span></div>
+    </div>
+    <div class="check-item">
+      <div class="check-icon s2">⑪</div>
+      <div><strong>토리톤 소라마치 번호표/대기 운영 방식 확인</strong><br><span style="font-size:0.72rem;color:var(--slate);">앱 기반 대기인지, 현장인지 확인해두면 편함.</span></div>
+    </div>
+  </div>
+
+  <div class="check-group">
+    <div class="check-group-title">★ 출발 1주일 전</div>
+    <div class="check-item">
+      <div class="check-icon s1">⑫</div>
+      <div><strong>Suica Apple Pay 설정 + 충전</strong><br><span style="font-size:0.72rem;color:var(--slate);">지하철·코인락커·일부 편의점 결제 가능. 인당 3,000~5,000엔 충전 권장.</span></div>
+    </div>
+    <div class="check-item">
+      <div class="check-icon s1">⑬</div>
+      <div><strong>5월 22~24일 도쿄 날씨 확인</strong><br><span style="font-size:0.72rem;color:var(--slate);">평균 18~23도, 비 가능성. 얇은 겉옷 + 접이식 우산 준비.</span></div>
+    </div>
+    <div class="check-item">
+      <div class="check-icon s1">⑭</div>
+      <div><strong>기요스미 정원 이소와타리(돌다리) 위치 지도 저장</strong><br><span style="font-size:0.72rem;color:var(--slate);">북쪽 이소와타리 구역이 스냅 포인트. 입장 후 방향 헷갈릴 수 있음.</span></div>
+    </div>
+    <div class="check-item">
+      <div class="check-icon s1">⑮</div>
+      <div><strong>나리타 T2 체크인 카운터 위치 사전 파악</strong><br><span style="font-size:0.72rem;color:var(--slate);">도착은 T3, 출발은 T2. T3↔T2 무료 셔틀 있음.</span></div>
+    </div>
+    <div class="check-item">
+      <div class="check-icon s1">⑯</div>
+      <div><strong>촬영 장비 챙기기 + 배터리 완충</strong><br><span style="font-size:0.72rem;color:var(--slate);">기요스미 정원 스냅, 스카이트리 야경, 나카메구로 강변이 주요 촬영 포인트.</span></div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     TAB 6 — 비용·준비물
+══════════════════════════════════════════ -->
+<div class="tab-content" id="tab-budget">
+<div class="content-wrap">
+
+  <div class="section-title">비용 · 결제수단 · 준비물</div>
+  <p class="section-sub">현금 vs 카드 혼용 전략. 현금 없으면 낭패 보는 곳 꼭 챙겨.</p>
+
+  <!-- 결제수단 표 -->
+  <div class="card">
+    <div class="card-title">💳 장소별 결제수단 정리</div>
+    <div style="overflow-x:auto;">
+      <table class="pay-table">
+        <thead><tr><th>장소</th><th>결제</th><th>현금 필요</th><th>비고</th></tr></thead>
+        <tbody>
+          <tr><td><strong>카메이도 교자 본점</strong></td><td>현금 or QR</td><td><span class="badge badge-risk">필수</span></td><td style="font-size:0.7rem;">카드 불가 가능성. 1인 최소 1,000엔 현금</td></tr>
+          <tr><td><strong>기요스미 정원</strong></td><td>현금</td><td><span class="badge badge-risk">필수</span></td><td style="font-size:0.7rem;">입장료 150엔. 소액 동전 필요</td></tr>
+          <tr><td><strong>iki ESPRESSO</strong></td><td>카드·IC·QR</td><td><span class="badge badge-backup">불필요</span></td><td style="font-size:0.7rem;">현금 불가 가능성</td></tr>
+          <tr><td><strong>멘야 미칸</strong></td><td>현금 중심</td><td><span class="badge badge-risk">필수</span></td><td style="font-size:0.7rem;">카드 불가 가능성. 1,000엔 지폐 필요</td></tr>
+          <tr><td><strong>Mr. Danger</strong></td><td>카드·전자화폐·PayPay</td><td><span class="badge badge-backup">불필요</span></td><td style="font-size:0.7rem;"></td></tr>
+          <tr><td><strong>히츠마부시 빈초</strong></td><td>카드 가능</td><td><span class="badge badge-backup">선택</span></td><td style="font-size:0.7rem;">예약 취소 조건 확인</td></tr>
+          <tr><td><strong>츠키지 장외시장</strong></td><td>현금 중심</td><td><span class="badge badge-risk">필수</span></td><td style="font-size:0.7rem;">간식 소액 현금</td></tr>
+          <tr><td><strong>도쿄역 코인락커</strong></td><td>Suica/IC카드</td><td><span class="badge badge-backup">IC 가능</span></td><td style="font-size:0.7rem;">700~1,000엔. Suica 사용 가능 락커 우선</td></tr>
+          <tr><td><strong>스카이트리 전망대</strong></td><td>카드·IC 가능</td><td><span class="badge badge-backup">불필요</span></td><td style="font-size:0.7rem;"></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="warn-block" style="margin-top:0.75rem;margin-bottom:0;">
+      💴 <strong>현금 권장:</strong> 인당 최소 10,000엔. 1,000엔·500엔·100엔 소액권 포함. 환전 시 소액권 많이 요청할 것.
+    </div>
+  </div>
+
+  <!-- 교통비 예산 -->
+  <div class="card">
+    <div class="card-title">🚄 교통비 예산 (1인 기준)</div>
+    <div style="overflow-x:auto;">
+      <table class="tr-table">
+        <thead><tr><th>구간</th><th>수단</th><th>요금/인</th><th>비고</th></tr></thead>
+        <tbody>
+          <tr><td>나리타 T3 → 카메이도</td><td>케이세이+지하철</td><td><strong>약 1,500엔</strong></td><td style="font-size:0.7rem;">경제적 선택</td></tr>
+          <tr><td>나리타 T3 → 카메이도</td><td>NEX+지하철</td><td><strong>약 3,000엔</strong></td><td style="font-size:0.7rem;">편리하지만 비쌈</td></tr>
+          <tr><td>Day 1 시내 이동</td><td>Suica 지하철</td><td>약 600엔</td><td style="font-size:0.7rem;"></td></tr>
+          <tr><td>Day 2 시내 이동</td><td>Suica 지하철</td><td>약 800엔</td><td style="font-size:0.7rem;">카메이도↔나카메구로 왕복</td></tr>
+          <tr><td>Day 3 시내 이동</td><td>Suica 지하철</td><td>약 400엔</td><td style="font-size:0.7rem;">카메이도→도쿄역</td></tr>
+          <tr><td>도쿄역 → 나리타 T2</td><td>NEX</td><td><strong>3,070엔</strong></td><td style="font-size:0.7rem;">귀국 확정 필수</td></tr>
+          <tr style="background:#fdf8f5;"><td colspan="2"><strong>합계 (케이세이 왕복 기준)</strong></td><td><strong>약 6,370엔/인</strong></td><td style="font-size:0.7rem;"></td></tr>
+          <tr style="background:#fdf8f5;"><td colspan="2"><strong>합계 (NEX 왕복 기준)</strong></td><td><strong>약 7,870엔/인</strong></td><td style="font-size:0.7rem;"></td></tr>
+          <tr style="background:#ffe8e3;"><td colspan="2"><strong>2인 합계</strong></td><td><strong>약 12,740~15,740엔</strong></td><td style="font-size:0.7rem;">JR패스 불필요</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div style="font-size:0.74rem;color:var(--slate);margin-top:0.6rem;padding:0.6rem;background:#f7f0eb;border-radius:6px;">
+      📱 <strong>Suica 충전만으로 충분</strong> — JR패스는 이 일정에서 손해. Apple Pay Suica 또는 IC카드 발급 후 3,000~5,000엔 충전 권장.
+    </div>
+  </div>
+
+  <!-- 준비물 -->
+  <div class="card">
+    <div class="card-title">🎒 준비물 체크</div>
+    <div class="info-grid">
+      <div class="info-cell">
+        <div class="info-cell-label">날씨 (5월 도쿄)</div>
+        <div class="info-cell-val">18~23°C / 비 가능 / 자외선 강함</div>
+        <div style="font-size:0.7rem;color:var(--slate);margin-top:0.3rem;">얇은 겉옷 + 접이식 우산 + 선크림 필수. 기요스미 스냅 전 메이크업 관리.</div>
+      </div>
+      <div class="info-cell">
+        <div class="info-cell-label">스카이트리 골든아워</div>
+        <div class="info-cell-val">2026.05.22 일몰 18:47</div>
+        <div style="font-size:0.7rem;color:var(--slate);margin-top:0.3rem;">18:30~19:00 스카이트리 방문이 사진 포인트. Day 1 스케줄 조정 기준.</div>
+      </div>
+      <div class="info-cell">
+        <div class="info-cell-label">촬영 장비</div>
+        <div class="info-cell-val">카메라 + 보조배터리</div>
+        <div style="font-size:0.7rem;color:var(--slate);margin-top:0.3rem;">기요스미 돌다리, 나카메구로 강변, 스카이트리 야경이 핵심 포인트.</div>
+      </div>
+      <div class="info-cell">
+        <div class="info-cell-label">필수 앱</div>
+        <div class="info-cell-val">ecbo cloak / Suica / 구글맵</div>
+        <div style="font-size:0.7rem;color:var(--slate);margin-top:0.3rem;">ecbo cloak: 코인락커 예약. SmartEx: NEX 예매.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 숙소 정보 -->
+  <div class="card">
+    <div class="card-title">🏨 숙소 — 더 원파이브 도쿄 카메이도</div>
+    <div class="info-grid">
+      <div class="info-cell"><div class="info-cell-label">위치</div><div class="info-cell-val">도쿄 동부 · 카메이도역 근처</div></div>
+      <div class="info-cell"><div class="info-cell-label">체크인/아웃</div><div class="info-cell-val">15:00 IN / 10:00 OUT</div></div>
+      <div class="info-cell"><div class="info-cell-label">짐 보관</div><div class="info-cell-val">무인 스마트 락커 가능성</div><div style="font-size:0.7rem;color:var(--slate);margin-top:0.2rem;">유료(1,000엔) 가능. 사전 문의 권장.</div></div>
+      <div class="info-cell"><div class="info-cell-label">Day 1 동선 전제</div><div class="info-cell-val">짐 보관 성공 필수</div><div style="font-size:0.7rem;color:var(--slate);margin-top:0.2rem;">보관 확인 후 관광 출발.</div></div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     TAB 7 — 근거·메모
+══════════════════════════════════════════ -->
+<div class="tab-content" id="tab-notes">
+<div class="content-wrap">
+
+  <div class="section-title">근거 · 메모</div>
+  <p class="section-sub">왜 이렇게 정리됐는지, 놓치기 쉬운 포인트, 최종 골격.</p>
+
+  <!-- AI 공통/차이점 -->
+  <div class="card">
+    <div class="card-title">🤖 AI들이 모두 동의한 것 vs 의견 갈린 것</div>
+
+    <div style="font-size:0.75rem;font-weight:700;color:#166534;margin-bottom:0.4rem;">✅ 공통 합의 사항</div>
+    <ul style="font-size:0.78rem;color:var(--slate);line-height:1.9;padding-left:1rem;margin-bottom:1rem;">
+      <li>동부/서부/긴자귀국 3분할 구조</li>
+      <li>기요스미 정원 → iki ESPRESSO Day 1 하이라이트로 동일</li>
+      <li>멘야 미칸 Day 2 라멘 앵커로 동일</li>
+      <li>히츠마부시 빈초 Day 3 메인으로 동일</li>
+      <li>폐업·미확인 후보 제외 동일</li>
+      <li>돈카츠 마루시치 귀국일 위험 동일</li>
+      <li>규탄노 레몬 신주쿠 이번 동선 부적합 동일</li>
+    </ul>
+
+    <div style="font-size:0.75rem;font-weight:700;color:#92400e;margin-bottom:0.4rem;">⚠️ 의견 갈린 사항</div>
+    <ul style="font-size:0.78rem;color:var(--slate);line-height:1.9;padding-left:1rem;">
+      <li><strong>Day 2 저녁:</strong> 아구Ri 추천 vs 현장 탐색 vs 구 시부야 vs 제외 — 의견 분분 → 이중 전략으로 해결</li>
+      <li><strong>커피도장 사무라이 Day 2 아침:</strong> 넣자 vs 영업 불확실하니 빼자 — 확인 조건부로 처리</li>
+      <li><strong>Mr. Danger 위치 표기:</strong> 타치바나 본점 vs 다른 지점 혼선 → 타치바나 본점으로 정리</li>
+    </ul>
+  </div>
+
+  <!-- 놓치기 쉬운 현실 포인트 -->
+  <div class="card">
+    <div class="card-title">💡 놓치기 쉬운 현실 포인트</div>
+
+    <details open>
+      <summary>🏨 숙소 짐 보관 방식</summary>
+      <div class="det-body">
+        더 원파이브 카메이도는 무인 스마트 락커 방식일 가능성이 있음. 유료(1,000엔) 가능성도 있어. Day 1 동선은 짐 보관이 전제이기 때문에, 사전에 숙소에 문의해서 보관 방법과 요금 확인해두는 게 좋아.
+      </div>
+    </details>
+
+    <details>
+      <summary>✈️ 나리타 T3 → T2 (도착/출발 터미널 다름)</summary>
+      <div class="det-body">
+        도착은 나리타 T3, 출발은 나리타 T2야. 귀국 당일에 T2 체크인 카운터 위치를 미리 파악해두면 여유로워. T3↔T2 간 무료 셔틀 버스가 운행되니 당황하지 않아도 됨.
+      </div>
+    </details>
+
+    <details>
+      <summary>🌤️ 5월 도쿄 날씨</summary>
+      <div class="det-body">
+        평균 기온 18~23도. 비 가능성 있음. 자외선 강함. 특히 기요스미 정원 야외 스냅 전에 자외선 차단 + 메이크업 관리 필요. 얇은 겉옷 하나와 접이식 우산은 필수로 챙겨.
+      </div>
+    </details>
+
+    <details>
+      <summary>📸 스카이트리 일몰 타이밍</summary>
+      <div class="det-body">
+        2026.05.22(금) 도쿄 일몰 시각 약 18:47. 18:30~19:00 스카이트리에 있으면 골든아워 노려볼 수 있어. Day 1 일정에서 iki 카페 이후 스카이트리로 이동하는 흐름이 딱 맞아 떨어짐. 이 타이밍이 Day 1 사진 하이라이트 포인트야.
+      </div>
+    </details>
+
+    <details>
+      <summary>🗄️ 도쿄역 코인락커 현실</summary>
+      <div class="det-body">
+        일반 코인락커는 일요일 오전에 빠르게 소진돼. ecbo cloak 앱 기반 사전 예약을 강력 추천해. Suica 결제 가능한 락커를 우선으로 선택하면 번거로움 없음. 700~1,000엔 예산 잡아.
+      </div>
+    </details>
+  </div>
+
+  <!-- 최종 확정 골격 -->
+  <div class="card">
+    <div class="card-title">📋 최종 확정 골격 (Wanderlog/다른 앱 복붙용)</div>
+    <div style="background:#f7f0eb;border-radius:8px;padding:1rem;font-size:0.75rem;line-height:2;color:var(--slate);font-family:monospace;">
+      [Day 1 — 5/22 금요일]<br>
+      09:45 나리타 T3 도착<br>
+      ~12:30 더 원파이브 카메이도 이동·짐 보관<br>
+      13:00 카메이도 교자 본점 (점심)<br>
+      14:20 기요스미 정원 (스냅)<br>
+      15:45 iki ESPRESSO (카페)<br>
+      17:30 스카이트리·소라마치 (야경)<br>
+      저녁 토리톤 회전초밥 → 실패시 Mr. Danger<br><br>
+      [Day 2 — 5/23 토요일]<br>
+      08:30 커피도장 사무라이 (확인 후) or 숙소카페<br>
+      10:20 카메이도 출발<br>
+      11:00 멘야 미칸 오픈런 (라멘)<br>
+      12:30 나카메구로 강변 산책<br>
+      13:40 다이칸야마 T-SITE<br>
+      15:30 it COFFEE 다이칸야마<br>
+      18:30 저녁 TBD (아구Ri 예약 + 현장 이중 전략)<br><br>
+      [Day 3 — 5/24 일요일 · 귀국]<br>
+      08:30 체크아웃<br>
+      09:10 도쿄역 코인락커 (ecbo cloak 예약)<br>
+      09:50 츠키지 장외시장 (계란말이+간식)<br>
+      12:00 히츠마부시 빈초 긴자 (예약)<br>
+      13:00 긴자 쇼핑·기념품<br>
+      14:45 도쿄역 복귀·짐 수거<br>
+      15:30 NEX 도쿄역 → 나리타 T2 (예매 필수)<br>
+      17:00 나리타 T2 도착<br>
+      18:55 출발
+    </div>
+  </div>
+
+  <!-- 다음 AI 인계용 -->
+  <div class="card">
+    <div class="card-title">🔁 다음 AI 인계용 핵심 주의사항</div>
+    <div style="font-size:0.76rem;line-height:1.9;color:var(--slate);">
+      <strong>요일 확정:</strong> 5/22 금 · 5/23 토 · 5/24 일(귀국). 절대 혼동 금지.<br>
+      <strong>숙소:</strong> 더 원파이브 도쿄 카메이도 (도쿄 동부). 체크인 15:00.<br>
+      <strong>공항:</strong> 나리타 T3 도착 / T2 출발. 다른 터미널임.<br>
+      <strong>미확정:</strong> Day 2 저녁 / 아구Ri 영업·흡연 확인 / 히츠마부시 일요일 런치 확인<br>
+      <strong>3분할 원칙:</strong> 신주쿠·시부야 넣지 않는다. 귀국일 맛집 욕심 금지.<br>
+      <strong>Day 3 핵심:</strong> 15:30 NEX 탑승이 기준선. 이후 모든 판단은 여기서 역산.<br>
+      <strong>결제:</strong> 카메이도 교자·멘야 미칸·츠키지는 현금 필수. 인당 10,000엔 이상.<br>
+      <strong>사전 예약 필수:</strong> 히츠마부시 빈초(12:00) + NEX(15:30) + ecbo cloak
+    </div>
+  </div>
+
+  <!-- 평가 기준 -->
+  <div class="card">
+    <div class="card-title">📊 이번 여행 후보 평가 기준</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.5rem;font-size:0.76rem;">
+      <div style="padding:0.5rem 0.75rem;background:#f7f0eb;border-radius:6px;">동선 적합도 <strong style="float:right;color:var(--rose-main);">25pt</strong></div>
+      <div style="padding:0.5rem 0.75rem;background:#f7f0eb;border-radius:6px;">후기 신뢰도 <strong style="float:right;color:var(--rose-main);">20pt</strong></div>
+      <div style="padding:0.5rem 0.75rem;background:#f7f0eb;border-radius:6px;">맛·목적성 <strong style="float:right;color:var(--rose-main);">20pt</strong></div>
+      <div style="padding:0.5rem 0.75rem;background:#f7f0eb;border-radius:6px;">가성비 <strong style="float:right;color:var(--rose-main);">15pt</strong></div>
+      <div style="padding:0.5rem 0.75rem;background:#f7f0eb;border-radius:6px;">커플 분위기 <strong style="float:right;color:var(--rose-main);">10pt</strong></div>
+      <div style="padding:0.5rem 0.75rem;background:#f7f0eb;border-radius:6px;">운영 안정성 <strong style="float:right;color:var(--rose-main);">10pt</strong></div>
+    </div>
+    <div style="margin-top:0.75rem;padding:0.75rem;background:linear-gradient(135deg,#fff8f6,#ffe9e4);border-radius:8px;font-size:0.78rem;color:var(--rose-deep);border:1px solid var(--rose-light);">
+      ✨ <strong>추가 기준:</strong> "이 장소가 꼬마 기억에 남을 것인가?" — 모든 스펙을 통과하고도 이 질문에 '예스'가 아니면 우선순위에서 내려가. 기요스미 정원의 돌다리, 나카메구로 강변 저녁빛, 스카이트리 야경이 이 기준을 통과한 이유야.
+    </div>
+  </div>
+
+</div>
+</div>
+
+<!-- ══════════ FOOTER ══════════ -->
+<footer style="background:#2d1f1a;color:rgba(255,255,255,0.45);text-align:center;padding:1.5rem;font-size:0.7rem;margin-top:2rem;">
+  도쿄 2박 3일 커플 여행 플랜 · 2026.05.22–24 · 가장 반짝이고 상쾌할 오월의 도쿄에서, 나란히 어깨를 포개어 걸어가는 매 걸음걸음이 우리 둘의 마음에 소중한 페이지로 영원토록 따스하게 간직되길 바래. 💛
+</footer>
+
+<script>
+function showTab(id) {
+  document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
+  event.currentTarget.classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
+</body>
+</html>
